@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    >
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:expandedTitleMarginStart="60dp">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/mainToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                layout="@layout/toolbar_actionbar" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffe5e5e5"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+                <FrameLayout
+                    android:id="@+id/fragment_pos1"
+                    android:layout_height="match_parent"
+                    app:layout_widthPercent="@fraction/fragment_width"
+                    android:layout_centerHorizontal="true"
+                    android:elevation="@dimen/fragment_elevation"
+                    tools:targetApi="lollipop"
+                    android:layout_marginTop="40dp"
+                    android:layout_width="0dp">
+                    <include layout="@layout/individual_edit" />
+                </FrameLayout>
+            </android.support.percent.PercentRelativeLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/takePictureFloatingActionButton"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:layout_anchor="@id/appbar"
+            app:layout_anchorGravity="bottom|right|end"
+            android:src="@drawable/ic_add_a_photo_white_24dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1"/>
+
+        <org.jdc.template.util.FloatingActionImageView
+            android:id="@+id/activityIndividualEditImage"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_width"
+            android:src="@drawable/default_image"
+            app:border_color="@android:color/white"
+            app:border_width="10dp"
+            app:layout_anchor="@id/appbar"
+            app:layout_anchorGravity="bottom|center"
+            />
+
+    </android.support.design.widget.CoordinatorLayout>
+</android.support.v4.widget.DrawerLayout>
